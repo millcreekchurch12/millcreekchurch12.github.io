@@ -1,40 +1,198 @@
-# GitHub Actions — Auto-deploy to GitHub Pages
-# This runs automatically every time you push changes to the main branch
+/* ═══════════════════════════════════════════
+   MILLCREEK CHURCH — SHARED STYLESHEET
+   Bellevue.org style, multi-page version
+═══════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap');
 
-name: Deploy to GitHub Pages
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:  # allows manual trigger from GitHub Actions tab
+:root{
+  --navy:    #1B3A6B;
+  --navy2:   #142D56;
+  --blue:    #2460A7;
+  --sky:     #EAF2FB;
+  --sky2:    #D0E6F8;
+  --gold:    #C8960C;
+  --gold2:   #F0B429;
+  --white:   #FFFFFF;
+  --off:     #F7F9FC;
+  --gray:    #F2F4F7;
+  --text:    #1A1A2E;
+  --muted:   #5A6B84;
+  --border:  #DDE4EE;
+  --red:     #C0392B;
+}
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+html{scroll-behavior:smooth;}
+body{font-family:'Source Sans 3',sans-serif;background:var(--white);color:var(--text);font-size:16px;line-height:1.72;font-weight:300;}
+img{max-width:100%;display:block;}
+a{color:var(--blue);text-decoration:none;}
+a:hover{text-decoration:underline;}
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+/* ── TOP BAR ── */
+.topbar{background:var(--navy2);padding:.38rem clamp(1rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;}
+.topbar-left,.topbar-right{display:flex;gap:1.25rem;align-items:center;}
+.topbar a{color:rgba(255,255,255,.6);font-size:.72rem;letter-spacing:.06em;text-decoration:none;transition:color .2s;}
+.topbar a:hover{color:var(--gold2);}
+.tb-give{background:var(--gold);color:var(--navy2)!important;padding:.24rem .85rem;font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;}
+.tb-give:hover{background:var(--gold2)!important;}
 
-jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:500;background:var(--white);border-bottom:3px solid var(--navy);box-shadow:0 2px 14px rgba(27,58,107,.1);}
+.nav-wrap{max-width:1320px;margin:0 auto;display:flex;align-items:stretch;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);}
+.nav-logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;padding:.75rem 0;flex-shrink:0;}
+.logo-mark{width:40px;height:40px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.logo-text b{display:block;font-family:'Merriweather',serif;font-size:.95rem;font-weight:700;color:var(--navy);line-height:1.2;}
+.logo-text small{display:block;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.nav-menu{display:flex;align-items:stretch;list-style:none;}
+.nav-menu>li{position:relative;display:flex;align-items:stretch;}
+.nav-menu>li>a{display:flex;align-items:center;padding:0 .9rem;font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-3px;transition:color .2s,border-color .2s;gap:.22rem;}
+.nav-menu>li>a:hover,.nav-menu>li>a.active-nav,.nav-menu>li:hover>a{color:var(--navy);border-color:var(--gold);}
+.nav-menu>li>a.give-btn{background:var(--navy);color:var(--white)!important;border:none;margin:auto .4rem;height:36px;padding:0 1.1rem;}
+.nav-menu>li>a.give-btn:hover{background:var(--blue);}
+.caret{font-size:.52rem;opacity:.55;}
+/* Dropdown */
+.dd{display:none;position:absolute;top:calc(100% + 3px);left:0;min-width:210px;background:var(--white);border:1px solid var(--border);border-top:3px solid var(--navy);box-shadow:0 8px 28px rgba(27,58,107,.12);z-index:600;}
+.nav-menu>li:hover .dd{display:block;}
+.dd a{display:block;padding:.52rem 1.15rem;font-size:.78rem;font-weight:600;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);transition:background .15s,color .15s;}
+.dd a:last-child{border-bottom:none;}
+.dd a:hover{background:var(--sky);color:var(--navy);}
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;margin-left:.5rem;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:.3s;}
+/* Mobile overlay */
+.mob{display:none;position:fixed;inset:0;background:var(--white);z-index:800;overflow-y:auto;padding:4.5rem 1.5rem 2rem;}
+.mob.open{display:block;}
+.mob-close{position:absolute;top:1rem;right:1.2rem;background:none;border:none;font-size:2rem;color:var(--navy);cursor:pointer;line-height:1;}
+.mob a{display:block;padding:.62rem 0;font-size:.95rem;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--border);}
+.mob a:hover{color:var(--blue);}
+.mob-hd{font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:700;padding:.8rem 0 .15rem;border-bottom:none!important;}
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.8rem 1.9rem;font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;font-family:'Source Sans 3',sans-serif;text-decoration:none;cursor:pointer;border:none;transition:all .22s;white-space:nowrap;}
+.btn-gold{background:var(--gold);color:var(--navy2);border:2px solid var(--gold);}
+.btn-gold:hover{background:var(--gold2);border-color:var(--gold2);}
+.btn-navy{background:var(--navy);color:var(--white);border:2px solid var(--navy);}
+.btn-navy:hover{background:var(--blue);}
+.btn-outline{background:transparent;color:var(--navy);border:2px solid var(--border);}
+.btn-outline:hover{border-color:var(--navy);background:var(--sky);}
+.btn-woutline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.5);}
+.btn-woutline:hover{border-color:var(--white);background:rgba(255,255,255,.1);}
+.btn-sm{padding:.5rem 1.15rem;font-size:.68rem;}
 
-      - name: Upload site files
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
+/* ── PAGE HERO ── */
+.page-hero{position:relative;min-height:320px;display:flex;align-items:center;padding:0 clamp(1.5rem,7vw,6rem);overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,45,86,.92) 0%,rgba(27,58,107,.75) 55%,rgba(20,45,86,.45) 100%);}
+.page-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.page-hero-inner{position:relative;z-index:1;max-width:680px;padding:6rem 0 3rem;}
+.page-hero-inner .eye{color:var(--gold2);}
+.page-hero-inner .eye::before{background:var(--gold2);}
+.page-hero-inner h1{font-family:'Merriweather',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:700;color:var(--white);line-height:1.1;margin:.5rem 0 1rem;}
+.page-hero-inner p{font-size:1rem;color:rgba(255,255,255,.78);max-width:520px;}
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+/* ── BREADCRUMB ── */
+.breadcrumb{background:var(--sky);padding:.55rem clamp(1rem,5vw,4rem);font-size:.75rem;color:var(--muted);}
+.breadcrumb a{color:var(--blue);text-decoration:none;}
+.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb span{margin:0 .4rem;opacity:.5;}
+
+/* ── SECTION COMMONS ── */
+.sec{padding:clamp(3.5rem,6vw,5.5rem) clamp(1.5rem,6vw,5rem);}
+.sec-inner{max-width:1160px;margin:0 auto;}
+.sec-inner-sm{max-width:860px;margin:0 auto;}
+.eye{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.65rem;display:flex;align-items:center;gap:.55rem;}
+.eye::before{content:'';display:block;width:18px;height:2px;background:var(--gold);flex-shrink:0;}
+.eye-lt{color:var(--gold2);}
+.eye-lt::before{background:var(--gold2);}
+.eye-ctr{justify-content:center;}
+.stitle{font-family:'Merriweather',serif;font-size:clamp(1.55rem,3.2vw,2.5rem);font-weight:700;line-height:1.2;color:var(--navy);}
+.stitle-lt{color:var(--white);}
+.slead{color:var(--muted);font-size:.97rem;margin:.6rem 0 0;}
+
+/* ── ANNOUNCE STRIP ── */
+.astrip{background:var(--navy);padding:.88rem clamp(1rem,5vw,4rem);display:flex;align-items:center;justify-content:center;gap:1.2rem;flex-wrap:wrap;text-align:center;}
+.astrip p{font-size:.88rem;color:rgba(255,255,255,.8);}
+.astrip p strong{color:var(--gold2);}
+.astrip a.abtn{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);text-decoration:none;border:1px solid var(--gold2);padding:.25rem .8rem;white-space:nowrap;transition:all .2s;}
+.astrip a.abtn:hover{background:var(--gold2);color:var(--navy2);}
+
+/* ── CONTENT CARDS ── */
+.card-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.card-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;}
+.card-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.content-card{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--navy);transition:box-shadow .2s,transform .2s;}
+.content-card:hover{box-shadow:0 8px 28px rgba(27,58,107,.1);transform:translateY(-3px);}
+.card-img{height:200px;background:var(--gray);position:relative;overflow:hidden;}
+.card-img img{width:100%;height:100%;object-fit:cover;}
+.card-body{padding:1.4rem;}
+.card-tag{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.35rem;}
+.card-body h3{font-family:'Merriweather',serif;font-size:1.02rem;font-weight:700;color:var(--navy);margin-bottom:.4rem;}
+.card-body p{font-size:.84rem;color:var(--muted);line-height:1.6;}
+
+/* ── PHOTO PLACEHOLDER ── */
+.ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;background:var(--gray);border:3px dashed var(--border);}
+.ph svg{opacity:.2;}
+.ph p{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;padding:0 1rem;line-height:1.5;}
+.ph-dark{background:var(--navy2);border-color:rgba(255,255,255,.15);}
+.ph-dark p{color:rgba(255,255,255,.35);}
+.ph-dark svg{opacity:.15;}
+
+/* ── COMMUNITY PHOTO CARDS ── */
+.photo-cards{display:grid;grid-template-columns:repeat(3,1fr);}
+.photo-card{position:relative;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;cursor:pointer;}
+.photo-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(20,45,86,.9) 0%,rgba(20,45,86,.25) 65%,transparent 100%);z-index:1;transition:opacity .3s;}
+.photo-card:hover::before{opacity:.82;}
+.pc-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .45s;}
+.photo-card:hover .pc-bg{transform:scale(1.04);}
+.pc-body{position:relative;z-index:2;padding:1.5rem 1.35rem;}
+.pc-body h3{font-family:'Merriweather',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.28rem;}
+.pc-body p{font-size:.83rem;color:rgba(255,255,255,.72);}
+.pc-arrow{display:inline-flex;align-items:center;gap:.3rem;margin-top:.5rem;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2);font-weight:700;}
+
+/* ── SCRIPTURE BANNER ── */
+.scr-banner{position:relative;padding:clamp(4rem,7vw,6rem) clamp(1.5rem,6vw,5rem);text-align:center;}
+.scr-banner::before{content:'';position:absolute;inset:0;background:rgba(20,45,86,.87);}
+.scr-inner{position:relative;z-index:1;max-width:740px;margin:0 auto;}
+.scr-inner blockquote{font-family:'Merriweather',serif;font-size:clamp(1.2rem,2.8vw,1.85rem);font-style:italic;font-weight:300;color:var(--white);line-height:1.65;margin-bottom:.9rem;}
+.scr-inner cite{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);font-weight:700;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy2);}
+.ft{padding:3rem clamp(1.5rem,6vw,5rem);display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:2.5rem;}
+.fb .fbn{font-family:'Merriweather',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:.2rem;}
+.fb .fbs{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.9rem;}
+.fb p{font-size:.8rem;color:rgba(255,255,255,.52);line-height:1.6;max-width:220px;}
+.fcol h4{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);font-weight:700;margin-bottom:.8rem;}
+.fcol a{display:block;font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;padding:.18rem 0;transition:color .2s;}
+.fcol a:hover{color:var(--gold2);}
+.fbot{padding:1.1rem clamp(1.5rem,6vw,5rem);border-top:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.9rem;}
+.fbot p{font-size:.72rem;color:rgba(255,255,255,.32);}
+.fsoc{display:flex;gap:.5rem;}
+.fsoc a{width:30px;height:30px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .2s;}
+.fsoc a:hover{background:var(--gold);}
+
+/* ── ANIMATIONS ── */
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.anim{opacity:0;animation:up .75s forwards;}
+.anim-1{animation-delay:.1s;}
+.anim-2{animation-delay:.25s;}
+.anim-3{animation-delay:.4s;}
+.anim-4{animation-delay:.55s;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .72s ease,transform .72s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1080px){.card-grid-4{grid-template-columns:repeat(3,1fr);}  .ft{grid-template-columns:1fr 1fr 1fr;}}
+@media(max-width:900px){
+  .nav-menu{display:none;}
+  .hamburger{display:flex;}
+  .card-grid-3,.photo-cards{grid-template-columns:1fr 1fr;}
+  .card-grid-2{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .card-grid-3,.card-grid-4,.photo-cards{grid-template-columns:1fr;}
+  .fbot{flex-direction:column;align-items:flex-start;}
+  .ft{grid-template-columns:1fr;}
+  .topbar-left{flex-wrap:wrap;gap:.4rem;}
+}

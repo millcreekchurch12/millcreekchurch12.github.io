@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Vision & Mission | Millcreek Church Utah</title>
-<link rel="stylesheet" href="../css/style.css"/>
-</head>
-<body>
-<!-- TOP BAR -->
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Worship | Millcreek Church Utah</title><link rel="stylesheet" href="../css/style.css"/></head>
+<body><!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-left">
     <a href="tel:8012785683">(801) 278-5683</a>
@@ -55,62 +50,37 @@
   <a href="media.html">Media</a><a href="resources.html">Resources</a><a href="events.html">Events</a><a href="give.html">Give Online</a>
 </div>
 
-<div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Vision & Mission</div>
+<div class="breadcrumb"><a href="../index.html">Home</a><span>›</span>Worship</div>
 <div class="page-hero">
-  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?auto=format&fit=crop&q=80&w=1600');"></div>
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1600');"></div>
   <div class="page-hero-inner">
-    <p class="eye eye-lt anim anim-1">About Us</p>
-    <h1 class="anim anim-2">Our Vision & Mission</h1>
-    <p class="anim anim-3">A catalyst for spiritual awakening in Millcreek and beyond.</p>
+    <p class="eye eye-lt anim anim-1">Get Involved</p>
+    <h1 class="anim anim-2">Worship at Millcreek Church</h1>
+    <p class="anim anim-3">Join us for Sunday worship — passionate, reverent, and rooted in Scripture.</p>
   </div>
 </div>
 
 <section class="sec">
   <div class="sec-inner">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
-    <div class="reveal">
-      <p class="eye">Our Vision</p>
-      <h2 class="stitle" style="margin-bottom:1rem;">A catalyst for spiritual awakening in Millcreek.</h2>
-      <p style="color:var(--text-muted);margin-bottom:1rem;">In Acts 1:8, Jesus said, "You will be My witnesses both in Jerusalem, and in all Judea and Samaria, and even to the remotest parts of the earth." That begins right here in Millcreek, Utah.</p>
-      <p style="color:var(--text-muted);margin-bottom:1.5rem;">As water flows to fill every low place, we are called to pour the Gospel into every corner of our community — through prayer, service, and the proclamation of Jesus Christ.</p>
-      <div class="crystal-box" style="margin-bottom:1.5rem;">
-        <h4>Mission Statement</h4>
-        <p style="font-family:Merriweather,serif;font-size:1.05rem;font-weight:700;color:var(--blue-deep);margin-top:.4rem;">Love God. Love People. Share Jesus. Make Disciples.</p>
-        <p style="font-size:.83rem;color:var(--text-muted);margin-top:.4rem;">From Matthew 22:38–39 and Matthew 28:19–20.</p>
+      <div class="reveal">
+        <p class="eye">Get Involved</p>
+        <h2 class="stitle" style="margin-bottom:1rem;">Worship at Millcreek Church</h2>
+        <p style="color:var(--muted);margin-bottom:1.25rem;">At Millcreek Church, worship is central to everything we do. Each Sunday gathering includes contemporary and traditional praise, prayer, baptism celebrations, and a biblically faithful sermon from Pastor Dan Mamatela. We believe worship is not merely a Sunday event but a daily posture of the heart before God.</p>
+        <div style="background:var(--sky);border-left:4px solid var(--navy);padding:1rem 1.25rem;margin-bottom:1.5rem;">
+          <p style="font-family:Merriweather,serif;font-style:italic;color:var(--navy);font-size:.97rem;">"Worship the Lord with gladness; come before Him with joyful songs."</p>
+          <p style="font-size:.75rem;color:var(--blue);font-weight:700;margin-top:.4rem;">— Psalm 100:2</p>
+        </div>
+        <a class="btn btn-navy" href="contact.html">Get Connected</a>
       </div>
-      <a class="btn btn-blue" href="pastor.html">Meet Our Pastor</a>
-    </div><img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?auto=format&fit=crop&q=80&w=800" alt="Ocean — God's glory in creation" style="width:100%;height:420px;object-fit:cover;" class="reveal"/></div>
+      <div class="reveal">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800" alt="Worship" style="width:100%;height:400px;object-fit:cover;"/>
+      </div>
+    </div>
   </div>
 </section>
-<section class="sec ocean-sec" style="background:var(--blue-deep);">
-  <div class="sec-inner">
-    <p class="eye eye-lt eye-ctr reveal">What We Value</p>
-    <h2 class="stitle stitle-lt reveal" style="text-align:center;margin-bottom:2.5rem;">Our Five Core Values</h2>
-    <div class="card-grid-3">
-<div class="crystal-card reveal">
-  <h3>Intimacy With Jesus</h3>
-  <p>Pursuing a passionate relationship with Jesus above all — in prayer, worship, and daily life.</p>
-</div>
-<div class="crystal-card reveal">
-  <h3>Biblical Truth</h3>
-  <p>Treasuring God's perfect, inerrant Word as our supreme standard for life, faith, and practice.</p>
-</div>
-<div class="crystal-card reveal">
-  <h3>Intentional Hospitality</h3>
-  <p>Welcoming every person with the unconditional love of Jesus — as the ocean welcomes every river.</p>
-</div>
-<div class="crystal-card reveal">
-  <h3>Ministry Excellence</h3>
-  <p>Reflecting the character of God in service — doing all things as unto the Lord.</p>
-</div>
-<div class="crystal-card reveal">
-  <h3>City Renewal</h3>
-  <p>Investing in the redemption of the people of Millcreek — one life, one family at a time.</p>
-</div></div>
-  </div></section>
-<div class="cta-strip"><div style="max-width:620px;margin:0 auto;"><p>Ready to take your next step? We would love to welcome you to Millcreek Church.</p><a class="btn btn-blue" href="new.html">I'm New — Learn More</a></div></div>
-
-<footer>
+<div style="background:var(--off);padding:3rem clamp(1.5rem,6vw,5rem);"><div class="sec-inner"><p class="eye eye-ctr reveal">Service Times</p><h2 class="stitle reveal" style="text-align:center;margin-bottom:2rem;">When We Gather</h2><div class="card-grid-2 reveal"><div style="background:var(--white);border:1px solid var(--border);border-top:3px solid var(--navy);padding:2rem;text-align:center;"><h3 style="font-family:Merriweather,serif;color:var(--navy);margin-bottom:.5rem;">Bible Study</h3><p style="font-size:1.4rem;font-weight:700;color:var(--navy);">Saturdays at 1:00 PM</p><p style="color:var(--muted);font-size:.88rem;margin-top:.5rem;">In-depth study of God's Word together as a community of faith.</p></div><div style="background:var(--white);border:1px solid var(--border);border-top:3px solid var(--gold);padding:2rem;text-align:center;"><h3 style="font-family:Merriweather,serif;color:var(--navy);margin-bottom:.5rem;">Sunday Worship</h3><p style="font-size:1.4rem;font-weight:700;color:var(--navy);">Sundays at 10:45 AM</p><p style="color:var(--muted);font-size:.88rem;margin-top:.5rem;">Praise, prayer, baptisms, and a message from God's Word.</p></div></div></div></div>
+<div style="background:var(--sky);padding:3rem clamp(1.5rem,6vw,5rem);text-align:center;"><div style="max-width:620px;margin:0 auto;"><p style="font-size:1.05rem;color:var(--navy);margin-bottom:1.25rem;">Interested in Worship? Contact us to learn more and get involved.</p><a class="btn btn-navy" href="contact.html">Contact Us</a></div></div><footer>
   <div class="ft">
     <div class="fb"><div class="fbn">Millcreek Church</div><div class="fbs">A House of Prayer · SBC</div><p>1515 E 4500 S<br>Millcreek, UT 84124<br>(801) 278-5683</p></div>
     <div class="fcol"><h4>Campus</h4><a href="campus.html">Campus Map</a><a href="contact.html">Employment</a><a href="contact.html">Weddings</a></div>
@@ -131,6 +101,4 @@ mob.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>mob.classLis
 const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});},{threshold:0.07});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 </script>
-
-</body>
-</html>
+</body></html>
