@@ -81,7 +81,7 @@ nav{position:sticky;top:0;z-index:500;background:var(--white);border-bottom:3px 
 .btn-sm{padding:.5rem 1.15rem;font-size:.68rem;}
 
 /* ── PAGE HERO ── */
-.page-hero{position:relative;min-height:320px;display:flex;align-items:center;padding:0 clamp(1.5rem,7vw,6rem);overflow:hidden;}
+.page-hero{position:relative;min-height:100px;display:flex;align-items:center;padding:0 clamp(1.5rem,7vw,6rem);overflow:hidden;}
 .page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,45,86,.92) 0%,rgba(27,58,107,.75) 55%,rgba(20,45,86,.45) 100%);}
 .page-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
 .page-hero-inner{position:relative;z-index:1;max-width:680px;padding:6rem 0 3rem;}
