@@ -111,7 +111,6 @@ nav{position:sticky;top:0;z-index:500;background:var(--white);border-bottom:3px 
 
 /* ── ANNOUNCE STRIP ── */
 .astrip{background:var(--navy);padding:.88rem clamp(1rem,5vw,4rem);display:flex;align-items:center;justify-content:center;gap:1.2rem;flex-wrap:wrap;text-align:center;}
-/*.astrip p{font-size:.88rem;color:rgba(255,255,255,.8);}*/
 .astrip p{font-size:1rem;color:#E0F7FF;}
 .astrip p strong{color:var(--gold2);}
 .astrip a.abtn{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);text-decoration:none;border:1px solid var(--gold2);padding:.25rem .8rem;white-space:nowrap;transition:all .2s;}
