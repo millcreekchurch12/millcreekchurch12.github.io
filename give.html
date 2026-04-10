@@ -126,7 +126,18 @@ function setF(b){document.querySelectorAll('.ftab').forEach(x=>{x.style.backgrou
 function pA(b,v){const i=document.getElementById('camt');if(v){i.value=v;}else{i.value='';i.focus();}upd();}
 function upd(){const r=parseFloat(document.getElementById('camt').value)||0;const fee=parseFloat((r*0.022+0.30).toFixed(2));const tot=parseFloat((r+fee).toFixed(2));const c=document.getElementById('cfe').checked;document.getElementById('famt').textContent='$'+fee.toFixed(2);document.getElementById('bamt').textContent='$'+(c?tot:r).toFixed(2);}
 document.getElementById('cfe').addEventListener('change',upd);upd();
-
+function doGive(){
+  const a=parseFloat(document.getElementById('camt').value);
+  const e=document.getElementById('gem').value.trim();
+  const fund=document.getElementById('fsel').value;
+  if(!a||a<=0){alert('Please select or enter a gift amount.');return;}
+  if(!e){alert('Please enter your email for your tax receipt.');return;}
+  /* ── Millcreek Church Stripe Payment Links ── */
+  const links={
+    'One-Time':'https://donate.stripe.com/6oU3cv5RydTb3gBbEO8og00',
+    'Weekly'  :'https://donate.stripe.com/6oU3cv5RydTb3gBbEO8og00',
+    'Monthly' :'https://donate.stripe.com/4gM9ATeo45mF6sNeR08og01'
+  };
   /* Passes donor email to Stripe so they don't have to re-enter it */
   const p=new URLSearchParams({prefilled_email:e,client_reference_id:fund});
   window.open(links[freq]+'?'+p.toString(),'_blank');
