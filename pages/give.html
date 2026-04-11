@@ -131,7 +131,18 @@ function pA(b,v){const i=document.getElementById('camt');if(v){i.value=v;}else{i
 function upd(){const r=parseFloat(document.getElementById('camt').value)||0;const fee=parseFloat((r*0.022+0.30).toFixed(2));const tot=parseFloat((r+fee).toFixed(2));const cover=document.getElementById('cfe').checked;document.getElementById('famt').textContent='$'+fee.toFixed(2);document.getElementById('bamt').textContent='$'+(cover?tot:r).toFixed(2);}
 document.getElementById('cfe').addEventListener('change',upd);
 upd();
-function doGive(){const a=parseFloat(document.getElementById('camt').value);const e=document.getElementById('gem').value.trim();if(!a||a<=0){alert('Please select or enter a gift amount.');return;}if(!e){alert('Please enter your email address for your tax receipt.');return;}const links={'One-Time':'https://buy.stripe.com/REPLACE_ONETIME','Weekly':'https://buy.stripe.com/REPLACE_WEEKLY','Monthly':'https://buy.stripe.com/REPLACE_MONTHLY'};const p=new URLSearchParams({prefilled_email:e,client_reference_id:document.getElementById('fsel').value});window.open(links[freq]+'?'+p.toString(),'_blank');}
+function doGive(){
+  const a=parseFloat(document.getElementById('camt').value);
+  const e=document.getElementById('gem').value.trim();
+  if(!a||a<=0){alert('Please select or enter a gift amount.');return;}
+  if(!e){alert('Please enter your email for your tax receipt.');return;}
+  const links={
+    'One-Time':'https://donate.stripe.com/6oU3cv5RydTb3gBbEO8og00',
+    'Weekly'  :'https://donate.stripe.com/6oU3cv5RydTb3gBbEO8og00',
+    'Monthly' :'https://donate.stripe.com/4gM9ATeo45mF6sNeR08og01'
+  };
+  window.open(links[freq],'_blank');
+}
 </script>
 <footer>
   <div class="ft">
