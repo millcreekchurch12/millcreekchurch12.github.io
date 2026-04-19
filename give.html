@@ -86,27 +86,32 @@
               <button onclick="setF(this)" style="flex:1;padding:.65rem 0;background:transparent;border:none;border-left:1px solid var(--border);cursor:pointer;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--text-muted);" class="ftab">Weekly</button>
               <button onclick="setF(this)" style="flex:1;padding:.65rem 0;background:transparent;border:none;border-left:1px solid var(--border);cursor:pointer;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--text-muted);" class="ftab">Monthly</button>
             </div>
-
-            <div style="background:var(--crystal);border:1.5px solid var(--border2);padding:1rem 1.05rem;margin-bottom:1rem;">
-              <p style="font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-bright);font-weight:700;margin-bottom:.45rem;">Give securely on Stripe</p>
-              <p style="font-size:.9rem;color:var(--text);line-height:1.7;">To avoid asking for the same information twice, this page now sends visitors directly to Stripe. Donors can enter their name, email, amount, and payment details once on the secure Stripe page.</p>
+            <span style="font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-bright);font-weight:700;margin-bottom:.55rem;display:block;">Select an amount</span>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem;margin-bottom:.65rem;">
+              <button onclick="pA(this,'25')" style="padding:.7rem 0;background:var(--crystal);border:2px solid var(--border2);cursor:pointer;font-family:Merriweather,serif;font-size:.97rem;font-weight:700;color:var(--text-mid);">$25</button><button onclick="pA(this,'50')" style="padding:.7rem 0;background:var(--crystal);border:2px solid var(--border2);cursor:pointer;font-family:Merriweather,serif;font-size:.97rem;font-weight:700;color:var(--text-mid);">$50</button><button onclick="pA(this,'100')" style="padding:.7rem 0;background:var(--crystal);border:2px solid var(--border2);cursor:pointer;font-family:Merriweather,serif;font-size:.97rem;font-weight:700;color:var(--text-mid);">$100</button><button onclick="pA(this,'250')" style="padding:.7rem 0;background:var(--crystal);border:2px solid var(--border2);cursor:pointer;font-family:Merriweather,serif;font-size:.97rem;font-weight:700;color:var(--text-mid);">$250</button><button onclick="pA(this,'500')" style="padding:.7rem 0;background:var(--crystal);border:2px solid var(--border2);cursor:pointer;font-family:Merriweather,serif;font-size:.97rem;font-weight:700;color:var(--text-mid);">$500</button><button onclick="pA(this,'')" style="padding:.7rem 0;background:var(--crystal);border:2px solid var(--border2);cursor:pointer;font-family:Merriweather,serif;font-size:.97rem;font-weight:700;color:var(--text-mid);">Other</button>
             </div>
-
-            <select id="fsel" style="width:100%;padding:.75rem .85rem;background:var(--crystal);border:2px solid var(--border2);color:var(--text);font-size:.9rem;outline:none;margin-bottom:1rem;">
+            <div style="position:relative;margin-bottom:1.4rem;">
+              <span style="position:absolute;left:.85rem;top:50%;transform:translateY(-50%);color:var(--blue-mid);font-size:1rem;font-weight:700;">$</span>
+              <input type="number" id="camt" value="100" min="1" style="width:100%;padding:.75rem .85rem .75rem 1.9rem;background:var(--crystal);border:2px solid var(--border2);color:var(--text);font-size:1rem;outline:none;" oninput="upd()"/>
+            </div>
+            <select id="fsel" style="width:100%;padding:.75rem .85rem;background:var(--crystal);border:2px solid var(--border2);color:var(--text);font-size:.9rem;outline:none;margin-bottom:1.25rem;">
               <option>General Fund (Tithes &amp; Offerings)</option>
               <option>Missions &amp; Outreach</option>
               <option>Building &amp; Facilities</option>
               <option>Youth Ministry</option>
               <option>Community Service Fund</option>
             </select>
-
-            <div style="background:var(--crystal);border:1.5px solid var(--border2);padding:.9rem 1rem;margin-bottom:1.2rem;">
-              <p style="font-size:.84rem;color:var(--text-muted);line-height:1.65;">Selected fund: <strong id="fundLabel" style="color:var(--blue-mid);">General Fund (Tithes &amp; Offerings)</strong></p>
-              <p style="font-size:.78rem;color:var(--text-muted);line-height:1.6;margin-top:.35rem;">If you want fund-specific tracking inside Stripe, create a separate Payment Link for each fund and map the dropdown to those links.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.6rem;">
+              <div><label style="font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--blue-bright);font-weight:700;display:block;margin-bottom:.28rem;">First Name</label><input type="text" placeholder="Jane" style="width:100%;padding:.72rem .85rem;background:var(--crystal);border:2px solid var(--border2);font-size:.9rem;outline:none;"/></div>
+              <div><label style="font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--blue-bright);font-weight:700;display:block;margin-bottom:.28rem;">Last Name</label><input type="text" placeholder="Smith" style="width:100%;padding:.72rem .85rem;background:var(--crystal);border:2px solid var(--border2);font-size:.9rem;outline:none;"/></div>
             </div>
-
-            <button onclick="doGive()" style="width:100%;padding:1rem;background:var(--blue-mid);color:var(--white);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;border:none;cursor:pointer;transition:background .2s;">Continue to Secure Giving</button>
-<div style="background:var(--crystal);border:1.5px solid var(--border2);border-left:4px solid var(--aqua);padding:.85rem 1.05rem;margin-top:1rem;">
+            <div style="margin-bottom:.75rem;"><label style="font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--blue-bright);font-weight:700;display:block;margin-bottom:.28rem;">Email Address</label><input type="email" placeholder="jane@example.com" id="gem" style="width:100%;padding:.72rem .85rem;background:var(--crystal);border:2px solid var(--border2);font-size:.9rem;outline:none;"/></div>
+            <div style="display:flex;align-items:flex-start;gap:.55rem;background:var(--crystal);border:1.5px solid var(--border2);padding:.8rem;margin-bottom:1.2rem;cursor:pointer;">
+              <input type="checkbox" id="cfe" checked style="margin-top:2px;width:15px;height:15px;flex-shrink:0;accent-color:var(--blue-mid);cursor:pointer;"/>
+              <label for="cfe" style="font-size:.8rem;color:var(--text-muted);cursor:pointer;line-height:1.5;">Add <span id="famt" style="color:var(--blue-mid);font-weight:700;">$2.50</span> to cover fees so <span style="color:var(--blue-mid);font-weight:700;">100% of my gift</span> goes directly to Millcreek Church.</label>
+            </div>
+            <button onclick="doGive()" style="width:100%;padding:1rem;background:var(--blue-mid);color:var(--white);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;border:none;cursor:pointer;transition:background .2s;">Give <span id="bamt">$102.50</span> Securely</button>
+            <div style="background:var(--crystal);border:1.5px solid var(--border2);border-left:4px solid var(--aqua);padding:.85rem 1.05rem;margin-top:1rem;">
               <p style="font-size:.75rem;color:var(--text-mid);line-height:1.65;"><strong>⚙️ Setup required:</strong> Replace Stripe links in the JS below with your real Payment Links from <a href="https://stripe.com" style="color:var(--blue-mid);font-weight:700;" target="_blank" rel="noopener">stripe.com</a> → Dashboard → Payment Links.</p>
             </div>
           </div>
@@ -117,24 +122,19 @@
 </section>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 let freq='One-Time';
-function setF(b){
-  document.querySelectorAll('.ftab').forEach(x=>{x.style.background='transparent';x.style.color='var(--text-muted)';});
-  b.style.background='var(--blue-deep)';
-  b.style.color='white';
-  freq=b.textContent.trim();
-}
-
-const fundSelect=document.getElementById('fsel');
-const fundLabel=document.getElementById('fundLabel');
-if(fundSelect){
-  fundSelect.addEventListener('change',()=>{fundLabel.textContent=fundSelect.value;});
-}
-
+function setF(b){document.querySelectorAll('.ftab').forEach(x=>{x.style.background='transparent';x.style.color='var(--text-muted)';});b.style.background='var(--blue-deep)';b.style.color='white';freq=b.textContent.trim();upd();}
+function pA(b,v){const i=document.getElementById('camt');if(v){i.value=v;}else{i.value='';i.focus();}upd();}
+function upd(){const r=parseFloat(document.getElementById('camt').value)||0;const fee=parseFloat((r*0.022+0.30).toFixed(2));const tot=parseFloat((r+fee).toFixed(2));const c=document.getElementById('cfe').checked;document.getElementById('famt').textContent='$'+fee.toFixed(2);document.getElementById('bamt').textContent='$'+(c?tot:r).toFixed(2);}
+document.getElementById('cfe').addEventListener('change',upd);upd();
 function doGive(){
+  const a=parseFloat(document.getElementById('camt').value);
+  const e=document.getElementById('gem').value.trim();
+  if(!a||a<=0){alert('Please select or enter a gift amount.');return;}
+  if(!e){alert('Please enter your email for your tax receipt.');return;}
   const links={
     'One-Time':'https://donate.stripe.com/6oU3cv5RydTb3gBbEO8og00',
-    'Weekly':'https://donate.stripe.com/6oU3cv5RydTb3gBbEO8og00',
-    'Monthly':'https://donate.stripe.com/4gM9ATeo45mF6sNeR08og01'
+    'Weekly'  :'https://donate.stripe.com/6oU3cv5RydTb3gBbEO8og00',
+    'Monthly' :'https://donate.stripe.com/4gM9ATeo45mF6sNeR08og01'
   };
   window.open(links[freq],'_blank');
 }
@@ -153,11 +153,7 @@ function doGive(){
 </footer>
 <script>
 const ham=document.getElementById('ham'),mob=document.getElementById('mob'),mc=document.getElementById('mc');
-if(ham && mob && mc){
-  ham.addEventListener('click',()=>mob.classList.add('open'));
-  mc.addEventListener('click',()=>mob.classList.remove('open'));
-  mob.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>mob.classList.remove('open')));
-}
-</script>
-</body>
-</html>
+ham.addEventListener('click',()=>mob.classList.add('open'));
+mc.addEventListener('click',()=>mob.classList.remove('open'));
+mob.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>mob.classList.remove('open')));
+const 
